@@ -1,14 +1,14 @@
 #import flask - from the package import class
 from flask import Flask, render_template
 
-app=Flask(__name__)
+app = Flask(__name__)
 
 #create a function that creates a web application
 # a web server will run this web application
 def create_app():
-    app.debug=True
+    app.debug = True
 
-    app.secret_key='BetterSecretNeeded123'
+    app.secret_key = 'BetterSecretNeeded123'
     
     #importing modules here to avoid circular references, register blueprints of routes
     from . import views

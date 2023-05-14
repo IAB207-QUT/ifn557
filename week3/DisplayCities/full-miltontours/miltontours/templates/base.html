@@ -8,8 +8,7 @@
     <meta name="description" content="Milton Tours">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
     <!-- an example of using css alongside bootstrap -->
     <style>
@@ -31,7 +30,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-info">
 
             <a class="navbar-brand text-light" href="{{ url_for('main.index') }}">
-                <img src="{{url_for('static', filename='img/miltonlogo.png')}}" width="30" height="30" class="d-inline-block align-top"
+                <img src="{{url_for('static', filename = 'img/miltonlogo.png')}}" width="30" height="30" class="d-inline-block align-top"
                     alt="Milton Tours Logo">
                 Milton Tours
             </a>
@@ -47,7 +46,7 @@
                 <a class="nav-item nav-link text-light active" href="#">About Us</a>
 
                 <!-- individual menu item-->
-                <a class="nav-item nav-link text-light" href="{{url_for('main.index', _anchor='cities_anchor')}}">Cities</a>
+                <a class="nav-item nav-link text-light" href="{{url_for('main.index', _anchor = 'cities_anchor')}}">Cities</a>
 
                 <!-- individual menu item-->
                 <a class="nav-item nav-link text-light" href="#">Basket</a>
@@ -74,14 +73,18 @@
 
         </nav>
 
-        {% block head %}{% endblock %}
+        {% block head %}
+        
+        {% endblock %}
 
     </header>
 
     <!-- main page content goes in container -->
     <div class="container-fluid">
         <main>
-            {% block main %}{% endblock %}
+            {% block main %}
+            
+            {% endblock %}
         </main>
     </div>
 

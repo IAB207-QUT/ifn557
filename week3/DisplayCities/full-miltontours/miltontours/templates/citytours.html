@@ -14,7 +14,7 @@
         <!-- each tour is a bootstrap card -->
         {% for tour in tours%}
         <div class="card">
-            <img class="card-img-top" src="{{url_for('static', filename='img/'+tour.image)}}" alt="Card image">
+            <img class="card-img-top" src="{{url_for('static', filename = 'img/'+tour.image)}}" alt="Card image">
             <div class="card-body">
                 <h4 class="card-title">{{tour.name}}</h4>
                 <p class="card-text">{{tour.description}}</p>

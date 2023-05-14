@@ -1,4 +1,4 @@
-#import flask - from the package import class
+#import flask - from package import class
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap4
 
@@ -26,4 +26,3 @@ def not_found(e):
 @app.errorhandler(500)
 def internal_error(e):
   return render_template("500.html")
-

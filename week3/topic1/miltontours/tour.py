@@ -1,6 +1,3 @@
-from datetime import datetime
-from .city import City
-
 class Tour:
     def __init__(self, name, description, image, price, city, date):
         self.name = name
@@ -15,5 +12,5 @@ class Tour:
 
     def __repr__(self):
         str = "Name: {}, Description: {}, Image: {}, Price: {}, City: {}, Date: {}\n" 
-        str =str.format( self.name,self.description,self.image, self.price, self.city, self.date)
+        str = str.format(self.name, self.description, self.image, self.price, self.city, self.date)
         return str

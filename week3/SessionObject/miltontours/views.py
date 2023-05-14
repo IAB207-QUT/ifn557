@@ -14,7 +14,7 @@ def index():
 def secret():
     return '<h1 style="color:yellow;">You found the secret page</h1>'
 
-@bp.route('/checkout/', methods=['POST','GET'])
+@bp.route('/checkout/', methods = ['POST', 'GET'])
 def checkout():
     
     # put form firstname into session

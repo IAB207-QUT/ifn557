@@ -1,17 +1,17 @@
-from flask import Blueprint, render_template, url_for, request, session
+from flask import Blueprint, render_template, request, session
 from .models import City, Tour, Order
 from datetime import datetime
 
 # This data will eventually be stored in a database
 sydney = City('1', 'Sydney', 'City in New South Wales with largest population', 'sydney.jpg')
 brisbane = City('2', 'Brisbane', 'City in Queensland with a good weather', 'brisbane.jpg')
-tour1 = Tour('1', 'Kangaroo point walk', 'Gentle stroll but be careful of cliffs. Hand feed the kangaroos', 't_hand.jpg', 99.00, brisbane, datetime(2020,7,23))
-tour2 = Tour('2', 'West End markets', 'Tour the boutique goods and food and ride the wheel', 't_ride.jpg', 20.00, brisbane, datetime(2019,10,30))
-tour3 = Tour('3', 'Whale spotting', 'Visit Straddy and see the whales migrating', 't_whale.jpg', 129.00, sydney, datetime(2019,10,30))
+tour1 = Tour('1', 'Kangaroo point walk', 'Gentle stroll but be careful of cliffs. Hand feed the kangaroos', 't_hand.jpg', 99.00, brisbane, datetime(2023,7,23))
+tour2 = Tour('2', 'West End markets', 'Tour the boutique goods and food and ride the wheel', 't_ride.jpg', 20.00, brisbane, datetime(2023,10,30))
+tour3 = Tour('3', 'Whale spotting', 'Visit Straddy and see the whales migrating', 't_whale.jpg', 129.00, sydney, datetime(2023,10,30))
 cities = [brisbane,sydney]
 tours = [tour1,tour2,tour3]
-order1 = Order('1', False, '', '','', '', datetime.now(), [tour1,tour2], tour1.price+tour2.price) # simulating order not checked out
-order2 = Order('2', False, '', '','', '', datetime.now(), [tour3], tour1.price+tour3.price) # simulating order not checked out
+order1 = Order('1', False, '', '','', '', datetime.now(), [tour1, tour2], tour1.price + tour2.price) # simulating order not checked out
+order2 = Order('2', False, '', '','', '', datetime.now(), [tour3], tour1.price + tour3.price) # simulating order not checked out
 orders = [order1,order2]
 
 bp = Blueprint('main', __name__)
@@ -31,7 +31,7 @@ def citytours(cityid):
     return render_template('citytours.html', tours = citytours)
 
 
-@bp.route('/order/', methods=['POST','GET'])
+@bp.route('/order/', methods = ['POST', 'GET'])
 def order():
     tour_id = request.args.get('tour_id')
     # is this a new order?
@@ -55,7 +55,7 @@ def deleteorder():
         del session['order_id']
     return render_template('index.html')
 
-@bp.route('/deleteorderitem/', methods=['POST'])
+@bp.route('/deleteorderitem/', methods = ['POST'])
 def deleteorderitem():
     print('User wants to delete tour with id={}'.format(request.form['id']))
     return render_template('index.html')

@@ -1,4 +1,3 @@
-from datetime import datetime
 
 class City:
     def __init__(self, id, name, description, image):

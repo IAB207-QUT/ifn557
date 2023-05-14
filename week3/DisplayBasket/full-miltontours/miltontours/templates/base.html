@@ -29,8 +29,8 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-info">
 
-            <a class="navbar-brand text-light" href="{{ url_for('main.index') }}">
-                <img src="{{url_for('static', filename='img/miltonlogo.png')}}" width="30" height="30" class="d-inline-block align-top"
+            <a class="navbar-brand text-light" href="{{url_for('main.index')}}">
+                <img src="{{url_for('static', filename = 'img/miltonlogo.png')}}" width="30" height="30" class="d-inline-block align-top"
                     alt="Milton Tours Logo">
                 Milton Tours
             </a>
@@ -73,14 +73,18 @@
 
         </nav>
 
-        {% block head %}{% endblock %}
+        {% block head %}
+        
+        {% endblock %}
 
     </header>
 
     <!-- main page content goes in container -->
     <div class="container-fluid">
         <main>
-            {% block main %}{% endblock %}
+            {% block main %}
+            
+            {% endblock %}
         </main>
     </div>
 
