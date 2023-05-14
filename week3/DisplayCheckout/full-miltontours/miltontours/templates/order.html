@@ -28,7 +28,7 @@
                 <!-- right column has price and delete button -->
                 <div class="col-sm-2">
                     <!-- delete item button -->
-                        <h5>{{ "$%.2f"|format(tour.price) }}</h5>
+                        <h5>{{"$%.2f"|format(tour.price)}}</h5>
                         <form method="POST" action="{{url_for('main.deleteorderitem')}}">
                             <input type="hidden" id="id" name="id" value="{{tour.id}}">
                             <input type="submit" value="Delete" class="btn btn-primary mb-3">
@@ -40,13 +40,13 @@
         <!-- total price and page controls -->
         <section>
             <div class="row co-12 d-flex">
-                <h5 class="mt-4">Quote = {{ "$%.2f"|format(totalprice) }}</h5>
+                <h5 class="mt-4">Quote = {{"$%.2f"|format(totalprice)}}</h5>
             </div>
         
             <div class="row co-12 d-flex mt-2 mb-4">
-                <a href="{{ url_for('main.index', _anchor='cities_anchor') }}" class="btn btn-primary mr-4">Cities</a>
-                <a href="{{ url_for('main.checkout') }}" class="btn btn-primary mr-4">Checkout</a>
-                <a href="{{ url_for('main.deleteorder') }}" class="btn btn-primary">Empty Basket</a>
+                <a href="{{url_for('main.index', _anchor='cities_anchor') }}" class="btn btn-primary mr-4">Cities</a>
+                <a href="{{url_for('main.checkout') }}" class="btn btn-primary mr-4">Checkout</a>
+                <a href="{{url_for('main.deleteorder') }}" class="btn btn-primary">Empty Basket</a>
             </div>
         </section>
     </div>

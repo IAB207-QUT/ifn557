@@ -11,8 +11,8 @@ class City:
         return str(self)
 
     def __repr__(self):
-        str = "Id: {}, Name: {}, Description: {}, Image: {} \n" 
-        str =str.format( self.id, self.name,self.description,self.image)
+        str = "ID: {}, Name: {}, Description: {}, Image: {} \n" 
+        str = str.format( self.id, self.name, self.description, self.image)
         return str
 
 class Tour:
@@ -29,8 +29,8 @@ class Tour:
         return str(self)
 
     def __repr__(self):
-        str = "Id: {}, Name: {}, Description: {}, Image: {}, Price: {}, City: {}, Date: {}\n" 
-        str =str.format( self.id, self.name,self.description,self.image, self.price, self.city, self.date)
+        str = "ID: {}, Name: {}, Description: {}, Image: {}, Price: {}, City: {}, Date: {}\n" 
+        str = str.format( self.id, self.name, self.description, self.image, self.price, self.city, self.date)
         return str
 
 class Order:
@@ -49,6 +49,6 @@ class Order:
         return str(self)
 
     def __repr__(self):
-        str = "id: {}, Status: {}, Firstname: {}, Surname: {}, Email: {}, Phone: {}, Date: {}, Tours: {}, Total Cost: {}\n" 
-        str =str.format( self.id, self.status,self.firstname,self.surname, self.email, self.phone, self.date, self.tours, self.total_cost)
+        str = "ID: {}, Status: {}, Firstname: {}, Surname: {}, Email: {}, Phone: {}, Date: {}, Tours: {}, Total Cost: {}\n" 
+        str = str.format( self.id, self.status, self.firstname, self.surname, self.email, self.phone, self.date, self.tours, self.total_cost)
         return str

@@ -1,16 +1,16 @@
 #import flask - from the package import class
 from flask import Flask, render_template
-from flask_bootstrap import Bootstrap
+from flask_bootstrap import Bootstrap4
 
-app=Flask(__name__)
+app = Flask(__name__)
 
 #create a function that creates a web application
 # a web server will run this web application
 def create_app():
-    app.debug=True
-    app.secret_key='BetterSecretNeeded123'
+    app.debug = True
+    app.secret_key = 'BetterSecretNeeded123'
 
-    bootstrap = Bootstrap(app)
+    bootstrap = Bootstrap4(app)
     
     #importing modules here to avoid circular references, register blueprints of routes
     from . import views
