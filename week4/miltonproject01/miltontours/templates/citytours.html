@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<!-- display tours for the specific city -->
+<section>
+
+    <div class="text-dark text-center">
+        <div>
+            <p class="h3 text-dark mb-4">Select a tour from below</p>
+        </div>
+    </div>
+
+    <div class="card-columns">
+        <!-- each tour is a bootstrap card -->
+        {% for tour in tours%}
+        <div class="card">
+            <img class="card-img-top" src="{{url_for('static', filename='img/'+tour.image)}}" alt="Card image">
+            <div class="card-body">
+                <h4 class="card-title">{{tour.name}}</h4>
+                <p class="card-text">{{tour.description}}</p>
+            </div>
+            <div class="card-footer"><a href="{{ url_for('main.order', tour_id=tour.id) }}" class="btn btn-primary">Add to Basket</a></div>
+        </div>
+        {% endfor %}
+    </div>
+
+</section>
+{% endblock %}
+
