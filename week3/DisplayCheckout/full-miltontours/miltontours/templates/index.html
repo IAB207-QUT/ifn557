@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<!-- add a big banner to welcome user -->
+<div class="jumbotron jumbotron-fluid card card-image" style="background-image: url({{url_for('static', filename='img/header.jpg')}});">
+    <div class="text-white text-center py-5 px-4">
+        <div>
+            <h1 class="display-2">Welcome to Milton Tours</h1>
+            <p class="display-4 text-dark">You need a vacation!</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block main %}
+<!-- marketing information -->
+<section>
+    <div class="container">
+        <div class="text-white text-center">
+            <div>
+                <p class="h1 text-dark mb-4">Why us?</p>
+            </div>
+        </div>
+        <!-- CSS Grid -->
+        <div class="row">
+            <div class="col-md-6">
+                <article>
+                    <h2>Beautiful locations</h2>
+                    <p>We have tours in some of the best locations all around Australia:</p>
+                    <ul>
+                        <li>Close to city center</li>
+                        <li>Free shuttle service to Airport</li>
+                        <li>Helpful staff</li>
+                    </ul>
+                </article>
+
+            </div>
+            <div class="col-md-6">
+                <article>
+                    <h2>Affordable selections</h2>
+                    <p>We have <span> great prices and offers </span> all year round!</p>
+                    <p>Click <a href="discounts.html">here</a> for more information.</p>
+                </article>
+            </div>
+        </div>
+        <!-- Horizontal Rule -->
+        <hr>
+    </div>
+</section>
+
+<!-- display the cities to the user -->
+<section>
+    <div class="text-dark text-center">
+        <div>
+            <p class="h3 text-dark mb-4" id="cities_anchor">Pick a city to see what we have to offer!</p>
+        </div>
+    </div>
+    <div class="card-deck">
+
+        {% for city in cities%}
+        <div class="card">
+            <img class="card-img-top" src="{{url_for('static', filename='img/'+city.image)}}" alt="Card image">
+            <div class="card-body">
+                <h4 class="card-title">{{city.name}}</h4>
+                <p class="card-text">{{city.description}}</p>
+            </div>
+            <div class="card-footer"><a href= "{{ url_for('main.citytours', cityid=city.id) }}" class="btn btn-primary">Tours</a></div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+
