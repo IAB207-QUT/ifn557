@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Milton Tours</title>
+    <meta name="description" content="Milton Tours">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- an example of using css alongside bootstrap -->
+    <style>
+        /* to place border around items in the shopping basket - orders.html */
+        .my-row {
+            border: 1px solid grey;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- putting header inside container will prevent full width navbar -->
+
+    <header>
+
+        <!--navbar creates a navigation bar -->
+        <!-- Colours https://getbootstrap.com/docs/4.0/utilities/colors/ -->
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-info">
+
+            <a class="navbar-brand text-light" href="{{ url_for('main.index') }}">
+                <img src="{{url_for('static', filename='img/miltonlogo.png')}}" width="30" height="30" class="d-inline-block align-top"
+                    alt="Milton Tours Logo">
+                Milton Tours
+            </a>
+
+            <!-- create a button for collapsing the menu -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <!-- individual menu item-->
+                <a class="nav-item nav-link text-light active" href="#">About Us</a>
+
+                <!-- individual menu item-->
+                <a class="nav-item nav-link text-light" href="{{url_for('main.index', _anchor='cities_anchor')}}">Cities</a>
+
+                <!-- individual menu item-->
+                <a class="nav-item nav-link text-light" href="{{url_for('main.order')}}">Basket</a>
+
+                <!-- individual menu item-->
+                <!-- this link will fail but good test of the 404 handler -->
+                <a class="nav-item nav-link text-light" href="discounts.html">Offers</a>
+
+                <!-- right aligned menu items thanks to ml-auto -->
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <!-- text like phone number -->
+                        <span class="navbar-text text-light">1-800-MILTON</span>
+                    </li>
+                    <li class="nav-item">
+                        <!-- search box -->
+                        <form class="form-inline my-2 my-lg-0 ml-5">
+                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-black btn btn-secondary btn-s my-0 ml-1"
+                                type="submit">Search</button>
+                        </form>
+                    </li>
+                </ul>
+
+        </nav>
+
+        {% block head %}{% endblock %}
+
+    </header>
+
+
+    <!-- main page content goes in container -->
+    <div class="container-fluid">
+        <main>
+            {% block main %}{% endblock %}
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p>Copyright &copy; Milton Tours</p>
+        </div>
+    </footer>
+    <!-- Footer -->
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
