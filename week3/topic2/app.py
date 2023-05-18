@@ -10,4 +10,4 @@ def secret():
     return '<h1 style="color:yellow;">You found the secret page</h1>'
 
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run(debug=True)
