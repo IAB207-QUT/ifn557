@@ -15,7 +15,7 @@ def create_app():
     #set the app configuration data 
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///milton.sqlite'
 
-    #initialize db with flask app
+    #initialise db with flask app
     db.init_app(app)
 
     bootstrap = Bootstrap4(app)

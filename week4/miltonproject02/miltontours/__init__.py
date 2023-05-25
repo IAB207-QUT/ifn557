@@ -13,9 +13,9 @@ def create_app():
     app.secret_key = 'BetterSecretNeeded123'
 
     #set the app configuration data 
-    app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///milton.sqlite'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///milton.sqlite'
 
-    #initialize db with flask app
+    #initialise db with flask app
     db.init_app(app)
 
     bootstrap = Bootstrap4(app)

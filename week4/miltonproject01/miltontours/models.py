@@ -9,8 +9,8 @@ class City(db.Model):
     tours = db.relationship('Tour', backref='City', cascade="all, delete-orphan")
 
     def __repr__(self):
-        str = "Id: {}, Name: {}, Description: {}, Image: {}\n" 
-        str =str.format( self.id, self.name,self.description,self.image)
+        str = "ID: {}, Name: {}, Description: {}, Image: {}\n" 
+        str = str.format(self.id, self.name, self.description, self.image)
         return str
 
 orderdetails = db.Table('orderdetails', 
@@ -19,7 +19,7 @@ orderdetails = db.Table('orderdetails',
     db.PrimaryKeyConstraint('order_id', 'tour_id') )
 
 class Tour(db.Model):
-    __tablename__='tours'
+    __tablename__ = 'tours'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64),nullable=False)
     description = db.Column(db.String(500), nullable=False)
@@ -30,7 +30,7 @@ class Tour(db.Model):
     
     def __repr__(self):
         str = "ID: {}, Name: {}, Description: {}, Image: {}, Price: {}, City: {}, Date: {}\n" 
-        str =str.format( self.id, self.name,self.description,self.image, self.price, self.city_id, self.date)
+        str = str.format(self.id, self.name, self.description, self.image, self.price, self.city_id, self.date)
         return str
 
 class Order(db.Model):
@@ -46,6 +46,6 @@ class Order(db.Model):
     tours = db.relationship("Tour", secondary=orderdetails, backref="orders")
     
     def __repr__(self):
-        str = "ID: {}, Status: {}, Firstname: {}, Surname: {}, Email: {}, Phone: {}, Date: {}, Tours: {}, Total Cost: {}\n" 
-        str =str.format( self.id, self.status,self.firstname,self.surname, self.email, self.phone, self.date, self.tours, self.totalcost)
+        str = "ID: {}, Status: {}, First Name: {}, Surname: {}, Email: {}, Phone: {}, Date: {}, Tours: {}, Total Cost: {}\n" 
+        str = str.format(self.id, self.status, self.firstname, self.surname, self.email, self.phone, self.date, self.tours, self.totalcost)
         return str
