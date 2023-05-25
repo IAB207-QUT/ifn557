@@ -3,7 +3,6 @@ from miltontours.city import City
 from miltontours.tour import Tour
 from miltontours.order import Order
 
-
 print('Creating a city Brisbane')
 brisbane = City('Brisbane', 'City in Queensland with a good weather', 'brisbane.jpg')
 print(brisbane)

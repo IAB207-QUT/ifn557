@@ -36,14 +36,13 @@ continuing.
 
 from flask import Blueprint
 from . import db
-from .models import City, Tour, Order
+from .models import City, Tour
 import datetime
 
-
-bp = Blueprint('admin', __name__, url_prefix='/admin/')
+admin_bp = Blueprint('admin', __name__, url_prefix='/admin')
 
 # function to put some seed data in the database
-@bp.route('/dbseed/')
+@admin_bp.route('/dbseed')
 def dbseed():
     city1 = City(name='Sydney', image='sydney.jpg', \
         description='''The state capital of New South Wales and the most populous city in Australia and Oceania.Located on Australia's east coast, the metropolis surrounds Port Jackson and extends about 70 km (43.5 mi) on its periphery towards the Blue Mountains to the west, Hawkesbury to the north, the Royal National Park to the south and Macarthur to the south-west. Sydney is famous for
@@ -135,5 +134,3 @@ being the world’s most livable city; amazing coffee; being the sports capital 
         return 'There was an issue adding a tour in dbseed function'
 
     return 'DATA LOADED'
-
-
