@@ -1,7 +1,7 @@
 from . import db
 
 class City(db.Model):
-    __tablename__='cities'
+    __tablename__ = 'cities'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), unique=True)
     description = db.Column(db.String(500), nullable=False)
@@ -41,7 +41,7 @@ class Order(db.Model):
     surname = db.Column(db.String(64))
     email = db.Column(db.String(128))
     phone = db.Column(db.String(32))
-    totalcost = db.Column(db.Float)
+    total_cost = db.Column(db.Float)
     date = db.Column(db.DateTime)
     tours = db.relationship("Tour", secondary=orderdetails, backref="orders")
     

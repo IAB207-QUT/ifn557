@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template
-from .models import City, Tour
+from .models import City, Tour, Order
 
 main_bp = Blueprint('main', __name__)
 
@@ -17,9 +17,10 @@ def citytours(cityid):
 # (get_url links in the templates will fail without these routes defined)
 
 @main_bp.route('/order', methods=['POST','GET'])
-def order():
+def order(id):
     #return render_template('order.html', order = order, totalprice = order.total_cost)
-    return 'not implemented yet'
+    order = Order.query.order_by(id=id).all()
+    return render_template('order.html', order = order, totalprice = order.total_cost)
 
 @main_bp.route('/deleteorder')
 def deleteorder():

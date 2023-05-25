@@ -1,7 +1,7 @@
 from . import db
 
 class City(db.Model):
-    __tablename__='cities'
+    __tablename__ = 'cities'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), unique=True)
     description = db.Column(db.String(500), nullable=False)
@@ -29,12 +29,12 @@ class Tour(db.Model):
     city_id = db.Column(db.Integer, db.ForeignKey('cities.id'))
     
     def __repr__(self):
-        str = "Id: {}, Name: {}, Description: {}, Image: {}, Price: {}, City: {}, Date: {}\n" 
+        str = "ID: {}, Name: {}, Description: {}, Image: {}, Price: {}, City: {}, Date: {}\n" 
         str =str.format( self.id, self.name,self.description,self.image, self.price, self.city_id, self.date)
         return str
 
 class Order(db.Model):
-    __tablename__='orders'
+    __tablename__ = 'orders'
     id = db.Column(db.Integer, primary_key=True)
     status = db.Column(db.Boolean, default=False)
     firstname = db.Column(db.String(64))
@@ -46,6 +46,6 @@ class Order(db.Model):
     tours = db.relationship("Tour", secondary=orderdetails, backref="orders")
     
     def __repr__(self):
-        str = "id: {}, Status: {}, Firstname: {}, Surname: {}, Email: {}, Phone: {}, Date: {}, Tours: {}, Total Cost: {}\n" 
+        str = "ID: {}, Status: {}, Firstname: {}, Surname: {}, Email: {}, Phone: {}, Date: {}, Tours: {}, Total Cost: {}\n" 
         str =str.format( self.id, self.status,self.firstname,self.surname, self.email, self.phone, self.date, self.tours, self.totalcost)
         return str
