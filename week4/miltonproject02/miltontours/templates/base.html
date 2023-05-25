@@ -31,7 +31,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-info">
 
             <a class="navbar-brand text-light" href="{{ url_for('main.index') }}">
-                <img src="{{url_for('static', filename='img/miltonlogo.png')}}" width="30" height="30" class="d-inline-block align-top"
+                <img src="{{ url_for('static', filename='img/miltonlogo.png') }}" width="30" height="30" class="d-inline-block align-top"
                     alt="Milton Tours Logo">
                 Milton Tours
             </a>
@@ -47,10 +47,10 @@
                 <a class="nav-item nav-link text-light active" href="#">About Us</a>
 
                 <!-- individual menu item-->
-                <a class="nav-item nav-link text-light" href="{{url_for('main.index', _anchor='cities_anchor')}}">Cities</a>
+                <a class="nav-item nav-link text-light" href="{{ url_for('main.index', _anchor='cities_anchor') }}">Cities</a>
 
                 <!-- individual menu item-->
-                <a class="nav-item nav-link text-light" href="{{url_for('main.order')}}">Basket</a>
+                <a class="nav-item nav-link text-light" href="{{ url_for('main.order') }}">Basket</a>
 
                 <!-- individual menu item-->
                 <!-- this link will fail but good test of the 404 handler -->
@@ -74,7 +74,9 @@
 
         </nav>
 
-        {% block head %}{% endblock %}
+        {% block head %}
+        
+        {% endblock %}
 
     </header>
 
@@ -82,7 +84,9 @@
     <!-- main page content goes in container -->
     <div class="container-fluid">
         <main>
-            {% block main %}{% endblock %}
+            {% block main %}
+            
+            {% endblock %}
         </main>
     </div>
 

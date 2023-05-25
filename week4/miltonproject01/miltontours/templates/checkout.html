@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap4/form.html" %}
 
 {% block head %}
     {% with messages = get_flashed_messages() %}
@@ -26,7 +26,7 @@
             </div>
             <div class="row">
                 <div class = "col-6">
-                    {{wtf.quick_form(form)}}
+                    {{ render_form(form) }}
                 </div>
             </div>
         </div>
