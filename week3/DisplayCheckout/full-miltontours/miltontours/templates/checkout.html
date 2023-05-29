@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% from 'bootstrap4/form.html' import render_form %}
+{% import 'bootstrap4/form.html' as wtf %}
 
 {% block head %}
     {% with messages = get_flashed_messages() %}
@@ -27,7 +27,7 @@
             </div>
             <div class="row">
                 <div class = "col-6">
-                    {{ render_form(form) }}
+                    {{ wtf.render_form(form) }}
                 </div>
             </div>
         </div>
