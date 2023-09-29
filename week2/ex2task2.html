@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- This is how you leave a comment in the HTML section of the document. -->
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="My Travel App">
+    <title>My Travel App</title>
+
+    <!-- Contains all the CSS definitions related to the elements in this page. -->
+
+    <style>
+        /* This is how you leave a comment in the stylesheet section of the document. */
+
+        /*Affects the whole document */
+        html,
+        body {
+            margin: 0;
+
+            font-family: Arial, Helvetica, sans-serif, Verdana, Geneva, Tahoma, sans-serif;
+            /* Sets the font styles for the page. These are web safe fonts. */
+        }
+
+        /*To wrap the content of the whole page. */
+        #wrapper {
+            margin: auto;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        /* Affects the element with the id navigationbar. */
+        #navigationbar {
+            clear: both;
+            height: 50px;
+            background-color: cornflowerblue;
+        }
+
+        /* This is to style the page heading. */
+        #companyname {
+            margin: 0;
+            float: left;
+            padding: 5px;
+            font-size: 30px;
+            text-decoration: none;
+        }
+
+        /* This is to remove the underline from the page heading because it's a link. */
+        #companyname a {
+            color: white;
+            text-decoration: none;
+        }
+    
+    /* NAVIGATION CSS BEGIN */
+        
+        /* This is to style the element that holds all the menu items. */
+        nav {
+            float: right;
+        }
+
+        /* This will only affect the <ul> element within the nav element. */
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding-left: 0;
+        }
+
+        /* This will only affect the <li> item in the <ul> element under the nav element. */
+        nav ul li {
+            color: #fff;
+            display: block;
+            float: left;
+            padding: 1rem;
+            border-right: 1px solid #bbb;
+            /* rem - Relative to font-size of the root element */
+            position: relative;
+            text-decoration: none;
+            transition-duration: 0.5s;
+        }
+
+        /* This will only affect the <a> tags within <li> items in the <ul> element under the nav element. */
+        nav ul li a {
+            display: block;
+            text-decoration: none;
+            color: white;
+        }
+        
+        /* Hover properties of list items */
+        nav ul li:hover,
+        nav ul li:focus-within {
+            background-color: royalblue;
+            cursor: pointer;
+        }
+
+        /* Link properties of a menu item in focus */
+        nav ul li:focus-within a {
+            outline: none;
+        }
+
+        /*This affects sub menu under a main menu item */
+        nav ul li ul {
+            background-color: cornflowerblue;
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            transition: all 0.5s ease;
+            margin-top: 1rem;
+            left: 0;
+            white-space: nowrap;
+        }
+
+        /* Hover properties of list items in sub menus */
+        nav ul li:hover>ul,
+        nav ul li:focus-within>ul,
+        nav ul li ul:hover,
+        nav ul li ul:focus {
+            visibility: visible;
+            opacity: 1;
+            display: block;
+        }
+
+        /*This affects list items of a sub menu under a main menu item */
+        nav ul li ul li {
+            background-color: cornflowerblue;
+            width: 100%;
+            display: inline-block;
+        }
+
+        /* This will only affect the LAST <li> item in the <ul> element under the nav element. */
+        nav li:last-child {
+            border-right: none;
+        }
+
+        /* Changes the colour of the active menu element. Thsi has to be set dynamically and cannot be done with CSS alone. */
+        nav .active {
+            background-color: black;
+        }
+
+        /* NAVIGATION CSS END */
+
+        /* HERO IMAGE / BANNER IMAGE START */
+
+        .hero {
+
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+
+            background-image: url(header.jpg);
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .hero>* {
+            color: white;
+        }
+
+        .hero>h2 {
+            font-size: 3rem;
+            padding-bottom: 1rem;
+            text-align: center;
+        }
+
+        /* HERO IMAGE / BANNER IMAGE END */
+
+        /* Sets the style for section focusing on cities. Uses CSS Flexbox. */
+        .topdestinations {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        /* Heading style */
+        .topdestinations-heading {
+            position: absolute;
+            margin-top: 0;
+        }
+
+        /* Sets the style for <article> used in the content area under the section. */
+        .topdestinations-country {
+            flex: 1 0 500px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+            margin: 3rem .5rem .5rem .5rem;
+            padding: .5rem;
+        }
+
+        /* Sets the style only for <img> used within the article tags in the section. */
+        .topdestinations-country img {
+            display: block;
+            border: 0;
+            width: 100%;
+            height: auto;
+        }
+
+        /* Styles the footer for the website. Uses CSS Flexbox. */
+        .footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: cornflowerblue;
+            color: white;
+        }
+
+        /* TOP DESTINATIONS TABLE BEGIN */
+        #topdestinationstable {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #topdestinationstable td,
+        #topdestinationstable th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #topdestinationstable tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #topdestinationstable th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: royalblue;
+            color: white;
+        }
+        /* TOP DESTINATIONS TABLE END */
+
+        /* CONTACT FORM BEGIN */
+        input[type=text], input[type=email] {
+            width: 25%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 25%;
+            background-color: royalblue;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: #b30000;
+        }
+        /* CONTACT FORM END */
+
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Outer wrapper for the whole content area. -->
+    <div id="wrapper">
+
+        <!-- Contains the heading, navigation and banner image -->
+        <header>
+            <div id="navigationbar">
+                <div id="companyname">
+                    <a href="#">My Travel App</a>
+                </div>
+                <nav id="navigationmenu">
+                    <ul id="navigationlist">
+                        <li class="active">
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Top Destinations</a>
+                        </li>
+                        <li>
+                            <a href="#">Contact Us</a>
+                        </li>
+                        <li>
+                            <a href="#">About Us</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <section class="hero">
+                <h2>You need a vacation!</h2>
+            </section>
+
+        </header>
+
+        <!-- Contains the main content of the website, divided into sections -->
+        <main>
+
+            <section class="topdestinations">
+
+                <div class="topdestinations-heading">
+                    <h1>Top Destinations</h1>
+                </div>
+
+                <article class="topdestinations-country">
+                    <img src="https://content.web-repository.com/s/32278669173579735/uploads/Images/colosseum2-6858222.jpg"
+                        alt="Colosseum, Rome, Italy">
+                    <div>
+                        <h3>Italy</h3>
+                        <p>Epicentre of the Roman Empire and birthplace of the Renaissance, this European virtuoso groans under the weight of its cultural cachet: it's here that you'll stand in the presence of Michelangelo's David and Sistine Chapel frescoes, Botticelli's Birth of Venus and Primavera and da Vinci's The Last Supper. In fact, Italy has more Unesco World Heritage cultural sites than any other country on Earth. Should you walk in the footsteps of ancient Romans in Pompeii, revel in Ravenna's glittering Byzantine treasures or get breathless over Giotto's revolutionary frescoes in Padua? It's a cultural conundrum as thrilling as it is overwhelming.</p>
+                    </div>
+                </article>
+
+                <article class="topdestinations-country">
+                    <img src="http://yourdream.s3.amazonaws.com/media/cache/8e/fa/8efa225540709ffd49ff9825547818cb.jpg"
+                        alt="Taj Mahal, Agra, India">
+                    <div>
+                        <h3>India</h3>
+                        <p>India is a remarkable tourist destination with plethora of experiences to offer traveller of all kinds- The country inhouses everything from the 7th wonder of the world Taj Mahal, to artistic palaces and forts of India that were crafted hundreds of years ago, and still stand upright to narrate the testimony of time of India’s rich culture and history. It also withholds vast tract of forests that are home to many exquisite wildlife and showcasing bountiful nature at its best in its range of national parks and sanctuaries located across the length and breadth of the country.</p>
+                    </div>
+                </article>
+
+                <article class="topdestinations-country">
+                    <img src="https://www.eastravel.co.uk/images/stories/flexicontent/l_fld125_beach-near-al-mughsayl-salalah.jpg"
+                        alt="Al Mukshail Beach, Salalah, Oman">
+                    <div>
+                        <h3>Oman</h3>
+                        <p>For visitors, this offers a rare chance to engage with the Arab world without the distorting lens of excessive wealth. Oman's low-rise towns retain their traditional charms, and Bedouin values remain at the heart of an Omani welcome. With an abundance of natural beauty, from spectacular mountains, wind-blown deserts and a pristine coastline, Oman is the obvious choice for those seeking out the modern face of Arabia while wanting still to sense its ancient soul.</p>
+                    </div>
+                </article>
+ 
+            </section>
+
+            <!-- table showing top destinations-->
+            <article>
+                <h2>Don't know where to go? This list might help!</h2>
+                <table id="topdestinationstable">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Top 10 Most Popular Tourist Destinations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Bangkok</td>
+                            <td>20.05 million</td>
+                        </tr>
+                        <tr>
+                            <td>London</td>
+                            <td>19.83 million</td>
+                        </tr>
+                        <tr>
+                            <td>Paris</td>
+                            <td>17.44 million</td>
+                        </tr>
+                        <tr>
+                            <td>Dubai</td>
+                            <td>15.79 million</td>
+                        </tr>
+                        <tr>
+                            <td>Singapore</td>
+                            <td>13.91 million</td>
+                        </tr>
+                        <tr>
+                            <td>New York</td>
+                            <td>13.13 million</td>
+                        </tr>
+                        <tr>
+                            <td>Kuala Lumpur</td>
+                            <td>12.58 million</td>
+                        </tr>
+                        <tr>
+                            <td>Tokyo</td>
+                            <td>11.93 million</td>
+                        </tr>
+                        <tr>
+                            <td>Istanbul</td>
+                            <td>10.7 million</td>
+                        </tr>
+                        <tr>
+                            <td>Seoul</td>
+                            <td>9.54 million</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2">
+                                <p style="font-size:12px; text-align: center;">Source: <a
+                                        href="http://www.traveller.com.au/worlds-most-popular-cities-for-tourists-2018-named-h164d2"
+                                        target="_blank">Traveller.com</a></p>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </article>
+
+            <!-- Contact form -->
+            <section>
+                <h2>Contact Us</h2>
+                <form method="post">
+                    <!-- Actual form would have action="" -->
+                        <label for="name">Enter your name: </label>
+                        <input type="text" name="name" id="name" required>
+                        <label for="email">Enter your email: </label>
+                        <input type="email" name="email" id="email" required>
+                        <input type="submit" value="Send Message!">
+                </form>
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- Footer of the website -->
+    <footer>
+        <div class="footer">
+            <p>Copyright &copy; 2019</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
