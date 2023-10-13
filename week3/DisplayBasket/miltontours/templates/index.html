@@ -38,8 +38,8 @@
             <div class="col-md-6">
                 <article>
                     <h2>Affordable selections</h2>
-                    <p>We have <span> great prices and offers </span> all year round!</p>
-                    <p>Click <a href="discounts.html">here</a> for more information.</p>
+                    <p>We have <span> great prices and offers </span> all year 'round!</p>
+                    <p>Click <a href="/discounts.html">here</a> for more information.</p>
                 </article>
             </div>
         </div>
@@ -55,19 +55,17 @@
             <p class="h3 text-dark mb-4" id="cities_anchor">Pick a city to see what we have to offer!</p>
         </div>
     </div>
-    <div class="card-deck">
-
+    <div class="row card-deck">
         {% for city in cities %}
-        <div class="card">
-            <img class="card-img-top" src="{{ url_for('static', filename = 'img/'+city.image) }}" alt="Card image">
+        <div class="card my-2">
+            <img class="card-img-top" src="{{url_for('static', filename='img/' + city.image)}}" style="max-height: 300px; width: auto;" alt="Card image">
             <div class="card-body">
-                <h4 class="card-title">{{ city.name }}</h4>
-                <p class="card-text">{{ city.description }}</p>
+                <h4 class="card-title">{{city.name}}</h4>
+                <p class="card-text">{{city.description}}</p>
             </div>
-            <div class="card-footer"><a href= "{{ url_for('main.citytours', cityid = city.id) }}" class="btn btn-primary">Tours</a></div>
+            <div class="card-footer"><a href= "{{url_for('main.citytours', city_id=city.id)}}" class="btn btn-primary">Tours</a></div>
         </div>
         {% endfor %}
     </div>
 </section>
 {% endblock %}
-

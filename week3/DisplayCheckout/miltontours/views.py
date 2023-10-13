@@ -20,7 +20,7 @@ bp = Blueprint('main', __name__)
 
 @bp.route('/')
 def index():
-    return render_template('index.html', cities = cities)
+    return render_template('index.html', cities=cities)
 
 @bp.route('/tours/<int:cityid>/')
 def citytours(cityid):

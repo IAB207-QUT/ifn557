@@ -1,5 +1,3 @@
-from datetime import datetime
-
 class City:
     def __init__(self, id, name, description, image):
         self.id = id
@@ -10,10 +8,8 @@ class City:
     def get_city_details(self):
         return str(self)
 
-    def __repr__(self):
-        str = "ID: {}, Name: {}, Description: {}, Image: {} \n" 
-        str = str.format( self.id, self.name, self.description, self.image)
-        return str
+    def __repr__(self): 
+        return f"ID: {self.id}, Name: {self.name}, Description: {self.description}, Image: {self.image} \n"
 
 class Tour:
     def __init__(self, id, name, description, image, price, city, date):
@@ -29,9 +25,7 @@ class Tour:
         return str(self)
 
     def __repr__(self):
-        str = "ID: {}, Name: {}, Description: {}, Image: {}, Price: {}, City: {}, Date: {}\n" 
-        str = str.format( self.id, self.name, self.description, self.image, self.price, self.city, self.date)
-        return str
+        return f"ID: {self.id}, Name: {self.name}, Description: {self.description}, Image: {self.image}, Price: {self.price}, City: {self.city}, Date: {self.date}\n"
 
 class Order:
     def __init__(self, id, status, firstname, surname, email, phone, date, tours, total_cost):
@@ -49,6 +43,4 @@ class Order:
         return str(self)
 
     def __repr__(self):
-        str = "ID: {}, Status: {}, Firstname: {}, Surname: {}, Email: {}, Phone: {}, Date: {}, Tours: {}, Total Cost: {}\n" 
-        str = str.format( self.id, self.status, self.firstname, self.surname, self.email, self.phone, self.date, self.tours, self.total_cost)
-        return str
+        return f"ID: {self.id}, Status: {self.status}, First Name: {self.firstname}, Surname: {self.surname}, Email: {self.email}, Phone: {self.phone}, Date: {self.date}, Tours: {self.tours}, Total Cost: {self.total_cost}\n"
