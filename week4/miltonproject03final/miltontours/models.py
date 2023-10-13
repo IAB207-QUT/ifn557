@@ -9,10 +9,7 @@ class City(db.Model):
     tours = db.relationship('Tour', backref='City', cascade="all, delete-orphan")
 
     def __repr__(self):
-        str = "ID: {}, Name: {}, Description: {}, Image: {}\n" 
-        str = str.format(self.id, self.name, self.description, self.image)
-        return str
-
+        return f"ID: {self.id}\nName: {self.name}\nDescription: {self.description}"
 orderdetails = db.Table('orderdetails', 
     db.Column('order_id', db.Integer,db.ForeignKey('orders.id'), nullable=False),
     db.Column('tour_id',db.Integer,db.ForeignKey('tours.id'),nullable=False),
@@ -29,9 +26,7 @@ class Tour(db.Model):
     city_id = db.Column(db.Integer, db.ForeignKey('cities.id'))
     
     def __repr__(self):
-        str = "ID: {}, Name: {}, Description: {}, Image: {}, Price: {}, City: {}, Date: {}\n" 
-        str = str.format(self.id, self.name, self.description, self.image, self.price, self.city_id, self.date)
-        return str
+        return f"ID: {self.id}\nName: {self.name}\nDescription: {self.description}\nPrice: {self.price}\nCity: {self.city_id}\nDate: {self.date}"
 
 class Order(db.Model):
     __tablename__ = 'orders'
@@ -46,6 +41,4 @@ class Order(db.Model):
     tours = db.relationship("Tour", secondary=orderdetails, backref="orders")
     
     def __repr__(self):
-        str = "ID: {}, Status: {}, First Name: {}, Surname: {}, Email: {}, Phone: {}, Date: {}, Tours: {}, Total Cost: {}\n" 
-        str = str.format(self.id, self.status, self.firstname, self.surname, self.email, self.phone, self.date, self.tours, self.totalcost)
-        return str
+        return f"ID: {self.id}\nStatus: {self.status}\nFirst Name: {self.first_name}\nSurname: {self.surname}\nEmail: {self.email}\nPhone: {self.phone}\nDate: {self.date}\nTours: {self.tours}\nTotal Cost: ${self.total_cost}"

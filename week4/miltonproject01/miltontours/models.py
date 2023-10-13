@@ -9,7 +9,7 @@ class City(db.Model):
     tours = db.relationship('Tour', backref='City', cascade="all, delete-orphan")
 
     def __repr__(self):
-        return f"ID: {self.id}, Name: {self.name}, Description: {self.description}, Image: {self.image}\n"
+        return f"ID: {self.id}\nName: {self.name}\nDescription: {self.description}"
 
 orderdetails = db.Table('orderdetails', 
     db.Column('order_id', db.Integer,db.ForeignKey('orders.id'), nullable=False),
@@ -27,7 +27,7 @@ class Tour(db.Model):
     city_id = db.Column(db.Integer, db.ForeignKey('cities.id'))
     
     def __repr__(self):
-        return f"ID: {self.id}, Name: {self.name}, Description: {self.description}, Image: {self.image}, Price: {self.price}, City: {self.city_id}, Date: {self.date}\n"
+        return f"ID: {self.id}\nName: {self.name}\nDescription: {self.description}\nPrice: {self.price}\nCity: {self.city_id}\nDate: {self.date}"
 
 class Order(db.Model):
     __tablename__ = 'orders'
@@ -42,4 +42,4 @@ class Order(db.Model):
     tours = db.relationship("Tour", secondary=orderdetails, backref="orders")
     
     def __repr__(self):
-        return f"ID: {self.id}, Status: {self.status}, First Name: {self.first_name}, Surname: {self.surname}, Email: {self.email}, Phone: {self.phone}, Date: {self.date}, Tours: {self.tours}, Total Cost: {self.total_cost}\n"
+        return f"ID: {self.id}\nStatus: {self.status}\nFirst Name: {self.first_name}\nSurname: {self.surname}\nEmail: {self.email}\nPhone: {self.phone}\nDate: {self.date}\nTours: {self.tours}\nTotal Cost: ${self.total_cost}"
