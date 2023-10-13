@@ -4,18 +4,19 @@ from flask_bootstrap import Bootstrap4
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
-app = Flask(__name__)
 
 #create a function that creates a web application
 # a web server will run this web application
 def create_app():
+    app = Flask(__name__)
     app.debug = True
     app.secret_key = 'BetterSecretNeeded123'
 
     #set the app configuration data 
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///milton.sqlite'
 
-    #initialise db with flask app
+    # initialise db with flask app - necessary because scope of app
+    # is only here in create_app, but db is defined globally
     db.init_app(app)
 
     Bootstrap4(app)
