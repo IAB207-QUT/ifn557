@@ -20,7 +20,7 @@ def citytours(cityid):
 def order(id):
     #return render_template('order.html', order = order, totalprice = order.total_cost)
     order = Order.query.order_by(id=id).all()
-    return render_template('order.html', order = order, totalprice = order.total_cost)
+    return render_template('order.html', order = order, total_price = order.total_cost)
 
 @main_bp.route('/deleteorder')
 def deleteorder():

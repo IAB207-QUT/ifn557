@@ -41,10 +41,10 @@ def order():
             order = None
     
     # calcultate totalprice
-    totalprice = 0
+    total_price = 0
     if order is not None:
         for tour in order.tours:
-            totalprice = totalprice + tour.price
+            total_price = total_price + tour.price
     
     # are we adding an item?
     if tour_id is not None and order is not None:
@@ -59,7 +59,7 @@ def order():
         else:
             flash('item already in basket')
             return redirect(url_for('main.order'))
-    return render_template('order.html', order = order, totalprice=totalprice)
+    return render_template('order.html', order = order, total_price=total_price)
 
 # Delete specific basket items
 @main_bp.route('/deleteorderitem', methods=['POST'])
