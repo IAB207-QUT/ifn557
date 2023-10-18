@@ -26,17 +26,17 @@ class Tour(db.Model):
     city_id = db.Column(db.Integer, db.ForeignKey('cities.id'))
     
     def __repr__(self):
-        return f"ID: {self.id}\nName: {self.name}\nDescription: {self.description}\nPrice: {self.price}\nCity: {self.city_id}\nDate: {self.date}"
+        return f"ID: {self.id}\nName: {self.name}\nDescription: {self.description}\nPrice: ${self.price}\nCity: {self.city_id}\nDate: {self.date}"
 
 class Order(db.Model):
     __tablename__ = 'orders'
     id = db.Column(db.Integer, primary_key=True)
     status = db.Column(db.Boolean, default=False)
-    firstname = db.Column(db.String(64))
+    first_name = db.Column(db.String(64))
     surname = db.Column(db.String(64))
     email = db.Column(db.String(128))
     phone = db.Column(db.String(32))
-    totalcost = db.Column(db.Float)
+    total_cost = db.Column(db.Float)
     date = db.Column(db.DateTime)
     tours = db.relationship("Tour", secondary=orderdetails, backref="orders")
     

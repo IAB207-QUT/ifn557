@@ -31,7 +31,7 @@ def order():
 
     # create new order if needed
     if order is None:
-        order = Order(status = False, firstname='', surname='', email='', phone='', totalcost=0, date=datetime.now())
+        order = Order(status = False, first_name='', surname='', email='', phone='', total_cost=0, date=datetime.now())
         try:
             db.session.add(order)
             db.session.commit()
@@ -59,7 +59,7 @@ def order():
         else:
             flash('item already in basket')
             return redirect(url_for('main.order'))
-    return render_template('order.html', order = order, total_price=total_price)
+    return render_template('order.html', order=order, total_price=total_price)
 
 # Delete specific basket items
 @main_bp.route('/deleteorderitem', methods=['POST'])

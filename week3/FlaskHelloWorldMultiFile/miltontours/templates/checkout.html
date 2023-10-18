@@ -1,4 +1,4 @@
-{% import 'bootstrap4/form.html' as wtf %}
+{% from 'bootstrap4/form.html' import render_form %}
 
 <!DOCTYPE html>
 <html>
@@ -33,7 +33,7 @@
     <button type="submit" class="btn btn-default">Submit</button>
  
   </form>
-  {{ wtf.render_form(form) }}
+  {{ render_form(form) }}
 </div>
  <!-- jQuery and Bootstrap Bundle (includes Popper) -->
  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
