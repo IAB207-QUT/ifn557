@@ -19,11 +19,11 @@ def citytours(cityid):
 # Referred to as "Basket" to the user
 @main_bp.route('/order', methods=['POST','GET'])
 def order():
-    tour_id = request.values.get('tour_id')
-
+    tour_id = request.args.get('tour_id')
     # retrieve order if there is one
-    if 'order_id'in session.keys():
-        order = Order.query.get(session['order_id'])
+    if 'order_id' in session.keys():
+        # order = Order.query.get(session['order_id'])
+        order = db.session.scalar_one(db.select(Order).where(Order.id==session['order_id']))
         # order will be None if order_id stale
     else:
         # there is no order
@@ -31,14 +31,17 @@ def order():
 
     # create new order if needed
     if order is None:
-        order = Order(status = False, first_name='', surname='', email='', phone='', total_cost=0, date=datetime.now())
-        try:
-            db.session.add(order)
-            db.session.commit()
-            session['order_id'] = order.id
-        except:
-            print('failed at creating a new order')
-            order = None
+        order = Order(status = False, firstname='', surname='', email='', phone='', totalcost=0, date=datetime.now())
+        db.session.add(order)
+        db.session.commit()
+        session['order_id'] = order.id
+        # try:
+        #     db.session.add(order)
+        #     db.session.commit()
+        #     session['order_id'] = order.id
+        # except:
+            # print('failed at creating a new order')
+            # order = None
     
     # calcultate totalprice
     total_price = 0
