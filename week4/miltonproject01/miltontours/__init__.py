@@ -1,4 +1,3 @@
-#import flask - from the package import class
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap4
 from flask_sqlalchemy import SQLAlchemy
