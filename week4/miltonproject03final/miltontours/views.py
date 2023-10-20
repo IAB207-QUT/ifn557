@@ -11,9 +11,9 @@ def index():
     cities = db.session.scalars(db.select(City).order_by(City.id)).all()
     return render_template('index.html', cities=cities)
 
-@main_bp.route('/tours/<int:cityid>')
-def citytours(cityid):
-    tours = db.session.scalars(db.select(Tour).where(Tour.city_id==cityid)).all()
+@main_bp.route('/tours/<int:city_id>')
+def citytours(city_id):
+    tours = db.session.scalars(db.select(Tour).where(Tour.city_id==city_id)).all()
     return render_template('citytours.html', tours=tours)
 
 # Referred to as "Basket" to the user
