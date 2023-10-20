@@ -31,7 +31,7 @@ def order():
 
     # create new order if needed
     if order is None:
-        order = Order(status = False, firstname='', surname='', email='', phone='', totalcost=0, date=datetime.now())
+        order = Order(status=False, firstname='', surname='', email='', phone='', totalcost=0, date=datetime.now())
         try:
             db.session.add(order)
             db.session.commit()

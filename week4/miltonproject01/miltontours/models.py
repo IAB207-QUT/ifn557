@@ -14,7 +14,7 @@ class City(db.Model):
 orderdetails = db.Table('orderdetails', 
     db.Column('order_id', db.Integer,db.ForeignKey('orders.id'), nullable=False),
     db.Column('tour_id',db.Integer,db.ForeignKey('tours.id'),nullable=False),
-    db.PrimaryKeyConstraint('order_id', 'tour_id') )
+    db.PrimaryKeyConstraint('order_id', 'tour_id'))
 
 class Tour(db.Model):
     __tablename__ = 'tours'

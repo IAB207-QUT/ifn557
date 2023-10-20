@@ -17,7 +17,6 @@ orders = [order1, order2]
 
 bp = Blueprint('main', __name__)
 
-
 @bp.route('/')
 def index():
     return render_template('index.html', cities=cities)
@@ -30,7 +29,6 @@ def citytours(cityid):
             if int(tour.city.id) == int(cityid): 
                 citytours.append(tour)
     return render_template('citytours.html', tours = citytours)
-
 
 @bp.route('/order/', methods = ['POST', 'GET'])
 def order():
@@ -47,9 +45,7 @@ def order():
     # are we adding an item? - will be implemented later with DB
     if tour_id:
         print('user requested to add tour id = {}'.format(tour_id))
-
-    return render_template('order.html', order = order, totalprice = order.total_cost)
-
+    return render_template('order.html', order=order, totalprice=order.total_cost)
 
 @bp.route('/deleteorder/')
 def deleteorder():
@@ -59,9 +55,8 @@ def deleteorder():
 
 @bp.route('/deleteorderitem/', methods = ['POST'])
 def deleteorderitem():
-    print('User wants to delete tour with id={}'.format(request.form['id']))
+    print(f'User wants to delete tour with id: {request.form['id']}')
     return render_template('index.html')
-
 
 @bp.route('/checkout/', methods = ['POST', 'GET'])
 def checkout():
@@ -82,4 +77,4 @@ def checkout():
             print(order)
             flash('Thank you for your information')
 
-    return render_template('checkout.html', form = form)
+    return render_template('checkout.html', form=form)
