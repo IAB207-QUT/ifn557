@@ -10,6 +10,7 @@ class City(db.Model):
 
     def __repr__(self):
         return f"ID: {self.id}\nName: {self.name}\nDescription: {self.description}"
+
 orderdetails = db.Table('orderdetails', 
     db.Column('order_id', db.Integer,db.ForeignKey('orders.id'), nullable=False),
     db.Column('tour_id',db.Integer,db.ForeignKey('tours.id'),nullable=False),
