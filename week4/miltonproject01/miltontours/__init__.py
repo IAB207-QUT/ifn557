@@ -9,7 +9,9 @@ db = SQLAlchemy()
 # a web server will run this web application
 def create_app():
     app = Flask(__name__)
+    # Don't leave this enabled in production
     app.debug = True
+    
     app.secret_key = 'BetterSecretNeeded123'
 
     #set the app configuration data 

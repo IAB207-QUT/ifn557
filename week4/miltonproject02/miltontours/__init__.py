@@ -1,4 +1,3 @@
-#import flask - from the package import class
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap4
 from flask_sqlalchemy import SQLAlchemy
@@ -9,7 +8,9 @@ db = SQLAlchemy()
 # a web server will run this web application
 def create_app():
     app = Flask(__name__)
+    # Don't leave this enabled in production
     app.debug = True
+    
     app.secret_key = 'BetterSecretNeeded123'
 
     #set the app configuration data 
