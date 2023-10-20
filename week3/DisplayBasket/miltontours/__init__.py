@@ -4,13 +4,14 @@ from flask import Flask, render_template
 # create a function that creates a web app
 # a WSGI server will run this app
 def create_app():
+  
   app = Flask(__name__)
   # Why do we need this secret_key?
   app.secret_key = 'BetterSecretNeeded123'
     
   # Importing modules here to avoid circular references
   from . import views
-  # Every blueprint must be registered with our app, else its routes won't 'exist'
+  # Every blueprint must be registered with our app, else it's routes won't 'exist'
   app.register_blueprint(views.bp)
 
   @app.errorhandler(404) 

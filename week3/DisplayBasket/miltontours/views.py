@@ -31,7 +31,7 @@ def citytours(city_id):
             city_tours.append(tour)
     return render_template('citytours.html', tours=city_tours)
 
-@bp.route('/order/', methods=['POST', 'GET'])
+@bp.route('/order', methods=['POST', 'GET'])
 def order():
     tour_id = request.args.get('tour_id')
     # is this a new order?
@@ -48,13 +48,13 @@ def order():
 
     return render_template('order.html', order=order, totalprice=order.total_cost)
 
-@bp.route('/deleteorder/')
+@bp.route('/deleteorder')
 def deleteorder():
     if 'order_id' in session:
         del session['order_id']
     return render_template('index.html')
 
-@bp.route('/deleteorderitem/', methods = ['POST'])
+@bp.route('/deleteorderitem', methods = ['POST'])
 def deleteorderitem():
     print(f'User wants to delete tour with id={request.form["id"]}')
     return render_template('index.html')

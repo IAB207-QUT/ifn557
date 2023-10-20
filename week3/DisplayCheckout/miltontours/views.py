@@ -21,16 +21,16 @@ bp = Blueprint('main', __name__)
 def index():
     return render_template('index.html', cities=cities)
 
-@bp.route('/tours/<int:cityid>/')
-def citytours(cityid):
+@bp.route('/tours/<int:city_id>')
+def citytours(city_id):
     citytours = []
     # create list of tours for this city
     for tour in tours:
-            if int(tour.city.id) == int(cityid): 
+            if int(tour.city.id) == int(city_id): 
                 citytours.append(tour)
     return render_template('citytours.html', tours = citytours)
 
-@bp.route('/order/', methods = ['POST', 'GET'])
+@bp.route('/order', methods = ['POST', 'GET'])
 def order():
 
     tour_id = request.args.get('tour_id')
@@ -47,18 +47,18 @@ def order():
         print('user requested to add tour id = {}'.format(tour_id))
     return render_template('order.html', order=order, totalprice=order.total_cost)
 
-@bp.route('/deleteorder/')
+@bp.route('/deleteorder')
 def deleteorder():
     if 'order_id' in session:
         del session['order_id']
     return render_template('index.html')
 
-@bp.route('/deleteorderitem/', methods = ['POST'])
+@bp.route('/deleteorderitem', methods = ['POST'])
 def deleteorderitem():
     print(f'User wants to delete tour with id: {request.form['id']}')
     return render_template('index.html')
 
-@bp.route('/checkout/', methods = ['POST', 'GET'])
+@bp.route('/checkout', methods = ['POST', 'GET'])
 def checkout():
     form = CheckoutForm() 
     if 'order_id' in session:

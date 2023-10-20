@@ -10,15 +10,12 @@ def index():
         message = '<h1 style="color:red;"> Hello World!<h1>'
     return message
 
-@bp.route('/secret/')
+@bp.route('/secret')
 def secret():
-    return '<h1 style="color:yellow;">You found the secret page</h1>'
+    return '<h1 style="color:green;">You found the secret page</h1>'
 
-@bp.route('/checkout/', methods = ['POST', 'GET'])
+@bp.route('/checkout', methods = ['POST', 'GET'])
 def checkout():
-    
     # put form firstname into session
     session['firstname'] = request.values.get('firstname')
-
     return render_template('checkout.html')
-
