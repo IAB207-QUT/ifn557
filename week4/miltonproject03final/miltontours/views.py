@@ -8,12 +8,12 @@ main_bp = Blueprint('main', __name__)
 
 @main_bp.route('/')
 def index():
-    cities = City.query.order_by(City.name).all()
+    cities = db.session.scalars(db.select(City).order_by(City.id)).all()
     return render_template('index.html', cities=cities)
 
 @main_bp.route('/tours/<int:cityid>')
 def citytours(cityid):
-    tours = Tour.query.filter(Tour.city_id==cityid)
+    tours = db.session.scalars(db.select(Tour).where(Tour.city_id==cityid)).all()
     return render_template('citytours.html', tours=tours)
 
 # Referred to as "Basket" to the user

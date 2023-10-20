@@ -1,26 +1,27 @@
 from flask import Blueprint, render_template
 from .models import City, Tour, Order
+from . import db
 
 main_bp = Blueprint('main', __name__)
 
 @main_bp.route('/')
 def index():
-    cities = City.query.order_by(City.name).all()
+    cities = db.session.scalars(db.select(City).order_by(City.id)).all()
     return render_template('index.html', cities=cities)
 
 @main_bp.route('/tours/<int:cityid>')
 def citytours(cityid):
-    tours = Tour.query.filter(Tour.city_id==cityid)
+    tours = db.session.scalars(db.select(Tour).where(Tour.city_id==cityid)).all()
     return render_template('citytours.html', tours=tours)
 
 # STUBS for routes not implemented yet
 # (get_url links in the templates will fail without these routes defined)
 
 @main_bp.route('/order', methods=['POST','GET'])
-def order(id):
+def order():
     #return render_template('order.html', order = order, totalprice = order.total_cost)
-    order = Order.query.order_by(id=id).all()
-    return render_template('order.html', order = order, total_price = order.total_cost)
+    order = db.session.scalar_one(db.select(Order).where(Order.id==id))
+    return 'not implemented yet'
 
 @main_bp.route('/deleteorder')
 def deleteorder():
