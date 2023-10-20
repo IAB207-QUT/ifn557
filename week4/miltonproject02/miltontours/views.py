@@ -20,7 +20,7 @@ def citytours(cityid):
 @main_bp.route('/order', methods=['POST','GET'])
 def order():
     #return render_template('order.html', order = order, totalprice = order.total_cost)
-    # order = db.session.scalar_one(db.select(Order).where(Order.id==session['order_id']))
+    # order = db.session.scalar(db.select(Order).where(Order.id==session['order_id']))
     return 'not implemented yet'
 
 @main_bp.route('/deleteorder')
