@@ -14,6 +14,4 @@ class Order:
         return str(self)
 
     def __repr__(self):
-        str = "Status: {}, First Name: {}, Surname: {}, Email: {}, Phone: {}, Date: {}, Tours: {}, Total Cost: {}\n" 
-        str = str.format(self.status, self.firstname, self.surname, self.email, self.phone, self.date, self.tours, self.total_cost)
-        return str
+       return f"Status: {self.status}, First Name: {self.firstname}, Surname: {self.surname}, Email: {self.email}, Phone: {self.phone}, Date: {self.date}, Tours: {self.tours}, Total Cost: {self.total_cost}\n" 

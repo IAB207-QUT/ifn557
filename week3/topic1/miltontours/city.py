@@ -9,6 +9,4 @@ class City:
         return str(self)
 
     def __repr__(self):
-        str = "Name: {}, Description: {}, Image: {}\n" 
-        str = str.format(self.name, self.description, self.image)
-        return str
+        return f"Name: {self.name}, Description: {self.description}, Image: {self.image}\n" 

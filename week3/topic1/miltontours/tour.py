@@ -11,6 +11,4 @@ class Tour:
         return str(self)
 
     def __repr__(self):
-        str = "Name: {}, Description: {}, Image: {}, Price: {}, City: {}, Date: {}\n" 
-        str = str.format(self.name, self.description, self.image, self.price, self.city, self.date)
-        return str
+        return f"Name: {self.name}, Description: {self.description}, Image: {self.image}, Price: {self.price}, City: {self.city}, Date: {self.date}\n" 
