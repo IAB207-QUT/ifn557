@@ -19,6 +19,7 @@ def create_app():
     
     return app
 
+# This creates the app when using the app factory pattern
 if __name__ == '__main__':
     app = create_app()
     app.run(debug=True)

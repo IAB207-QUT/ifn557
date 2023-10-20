@@ -17,8 +17,6 @@ def checkout():
         return redirect(url_for('main.index'))
     return render_template('checkout.html', form=checkout_form)
 
-
-@bp.route('/secret/')
+@bp.route('/secret')
 def secret():
-    return '<h1 style="color:yellow;">You found the secret page</h1>'
-
+    return '<h1 style="color:green;">You found the secret page</h1>'

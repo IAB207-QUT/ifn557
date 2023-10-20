@@ -4,8 +4,10 @@ from flask import Flask, render_template
 # create a function that creates a web app
 # a WSGI server will run this app
 def create_app():
-  
   app = Flask(__name__)
+
+  app.debug = True
+
   # Why do we need this secret_key?
   app.secret_key = 'BetterSecretNeeded123'
     

@@ -44,7 +44,7 @@ def order():
                 order = i
     # are we adding an item? - will be implemented later with DB
     if tour_id:
-        print(f'User requested to add tour id = {tour_id}')
+        print(f'User requested to add tour id: {tour_id}')
 
     return render_template('order.html', order=order, totalprice=order.total_cost)
 
@@ -56,5 +56,5 @@ def deleteorder():
 
 @bp.route('/deleteorderitem', methods = ['POST'])
 def deleteorderitem():
-    print(f'User wants to delete tour with id={request.form["id"]}')
+    print(f'User wants to delete tour with id: {request.form["id"]}')
     return render_template('index.html')
