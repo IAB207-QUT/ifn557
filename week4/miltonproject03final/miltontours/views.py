@@ -6,25 +6,26 @@ from . import db
 
 main_bp = Blueprint('main', __name__)
 
+# Home page
 @main_bp.route('/')
 def index():
     cities = db.session.scalars(db.select(City).order_by(City.id)).all()
     return render_template('index.html', cities=cities)
 
+# View all the tours of a city
 @main_bp.route('/tours/<int:city_id>')
 def citytours(city_id):
     tours = db.session.scalars(db.select(Tour).where(Tour.city_id==city_id)).all()
     return render_template('citytours.html', tours=tours)
 
 # Referred to as "Basket" to the user
-@main_bp.route('/order', methods=['POST','GET'])
+@main_bp.route('/order', methods=['POST', 'GET'])
 def order():
     tour_id = request.args.get('tour_id')
     # retrieve order if there is one
     if 'order_id' in session.keys():
-        # order = Order.query.get(session['order_id'])
         order = db.session.scalar(db.select(Order).where(Order.id==session['order_id']))
-        # order will be None if order_id stale
+        # order will be None if order_id/session is stale
     else:
         # there is no order
         order = None
@@ -37,18 +38,18 @@ def order():
             db.session.commit()
             session['order_id'] = order.id
         except:
-            print('failed at creating a new order')
+            print('Failed at creating a new order!')
             order = None
     
-    # calcultate totalprice
+    # calculate total price
     total_price = 0
     if order is not None:
         for tour in order.tours:
-            total_price = total_price + tour.price
+            total_price += tour.price
     
     # are we adding an item?
     if tour_id is not None and order is not None:
-        tour = Tour.query.get(tour_id)
+        tour = db.session.scalar(db.select(Tour).where(Tour.id==tour_id))
         if tour not in order.tours:
             try:
                 order.tours.append(tour)
@@ -62,12 +63,13 @@ def order():
     return render_template('order.html', order=order, total_price=total_price)
 
 # Delete specific basket items
+# Note this route cannot accept GET requests now
 @main_bp.route('/deleteorderitem', methods=['POST'])
 def deleteorderitem():
-    id=request.form['id']
+    id = request.form['id']
     if 'order_id' in session:
-        order = Order.query.get_or_404(session['order_id'])
-        tour_to_delete = Tour.query.get(id)
+        order = db.get_or_404(Order, session['order_id'])
+        tour_to_delete = db.session.scalar(db.select(Tour).where(Tour.id==id))
         try:
             order.tours.remove(tour_to_delete)
             db.session.commit()
@@ -84,27 +86,27 @@ def deleteorder():
         flash('All items deleted')
     return redirect(url_for('main.index'))
 
+# Complete the order
 @main_bp.route('/checkout', methods=['POST','GET'])
 def checkout():
     form = CheckoutForm() 
     if 'order_id' in session:
-        order = Order.query.get_or_404(session['order_id'])
-       
+        order = db.get_or_404(Order, session['order_id'])
         if form.validate_on_submit():
             order.status = True
             order.firstname = form.firstname.data
             order.surname = form.surname.data
             order.email = form.email.data
             order.phone = form.phone.data
-            totalcost = 0
+            total_cost = 0
             for tour in order.tours:
-                totalcost = totalcost + tour.price
-            order.totalcost = totalcost
+                total_cost += tour.price
+            order.totalcost = total_cost
             order.date = datetime.now()
             try:
                 db.session.commit()
                 del session['order_id']
-                flash('Thank you! One of our awesome team members will contact you soon...')
+                flash('Thank you! One of our team members will contact you soon...')
                 return redirect(url_for('main.index'))
             except:
                 return 'There was an issue completing your order'
