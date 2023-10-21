@@ -10,24 +10,21 @@ tour2 = Tour('2', 'West End markets', 'Tour the boutique goods and food and ride
 tour3 = Tour('3', 'Whale spotting', 'Visit Straddy and see the whales migrating', 't_whale.jpg', 129.00, sydney, datetime(2023,10,30))
 cities = [brisbane,sydney]
 tours = [tour1,tour2,tour3]
-order1 = Order('1', False, '', '','', '', datetime.now(), [tour1, tour2], tour1.price + tour2.price) # simulating order not checked out
-order2 = Order('2', False, '', '','', '', datetime.now(), [tour3], tour1.price + tour3.price) # simulating order not checked out
+order1 = Order('1', False, '', '', '', '', datetime.now(), [tour1, tour2], tour1.price + tour2.price) # simulating order not checked out
+order2 = Order('2', False, '', '', '', '', datetime.now(), [tour3], tour1.price + tour3.price) # simulating order not checked out
 orders = [order1, order2]
 
 bp = Blueprint('main', __name__)
 
-
 @bp.route('/')
 def index():
-    return render_template('index.html', cities = cities)
+    return render_template('index.html', cities=cities)
 
-@bp.route('/tours/<int:cityid>/')
+@bp.route('/tours/<int:cityid>')
 def citytours(cityid):
     citytours = []
     # create list of tours for this city
     for tour in tours:
             if int(tour.city.id) == int(cityid): 
                 citytours.append(tour)
-    return render_template('citytours.html', tours = citytours)
-
-
+    return render_template('citytours.html', tours=citytours)
