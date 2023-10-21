@@ -5,7 +5,7 @@ bp = Blueprint('main', __name__)
 @bp.route('/')
 def index():
     if 'firstname' in session:
-        message = ('<h1 style="color:red;"> Hello {}</h1>'.format(session['firstname']))
+        message = f'<h1 style="color:red;"> Hello {session["firstname"]}</h1>'
     else:
         message = '<h1 style="color:red;"> Hello World!<h1>'
     return message
