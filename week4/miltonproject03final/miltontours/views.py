@@ -21,7 +21,8 @@ def citytours(city_id):
 # Referred to as "Basket" to the user
 @main_bp.route('/order', methods=['POST', 'GET'])
 def order():
-    tour_id = request.args.get('tour_id')
+    tour_id = request.values.get('tour_id')
+    print(f'Values: {tour_id}')
     # retrieve order if there is one
     if 'order_id' in session.keys():
         order = db.session.scalar(db.select(Order).where(Order.id==session['order_id']))
@@ -58,7 +59,7 @@ def order():
                 return 'There was an issue adding the item to your basket'
             return redirect(url_for('main.order'))
         else:
-            flash('item already in basket')
+            flash('There is already one of these in the basket')
             return redirect(url_for('main.order'))
     return render_template('order.html', order=order, total_price=total_price)
 
