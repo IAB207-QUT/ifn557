@@ -39,7 +39,7 @@ def order():
             db.session.commit()
             session['order_id'] = order.id
         except:
-            print('Failed at creating a new order!')
+            print('Failed trying to create a new order!')
             order = None
     
     # calculate total price
@@ -56,7 +56,7 @@ def order():
                 order.tours.append(tour)
                 db.session.commit()
             except:
-                return 'There was an issue adding the item to your basket'
+                flash('There was an issue adding the item to your basket',category='danger')
             return redirect(url_for('main.order'))
         else:
             flash('There is already one of these in the basket')
