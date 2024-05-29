@@ -25,8 +25,8 @@ def create_app():
     #importing modules here to avoid circular references, register blueprints of routes
     from . import views
     app.register_blueprint(views.main_bp)
-    #from . import admin
-    #app.register_blueprint(admin.admin_bp)
+    from . import admin
+    app.register_blueprint(admin.admin_bp)
     
     @app.errorhandler(404) 
     # Inbuilt function (to Flask) which takes error as parameter

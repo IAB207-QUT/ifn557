@@ -10,7 +10,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
-    <!-- an example of using css alongside bootstrap -->
+    <!-- An example of using CSS alongside Bootstrap -->
+    <!-- It's also best to use external style, not internal like below -->
     <style>
         /* to place border around items in the shopping basket - orders.html */
         .my-row {
@@ -20,22 +21,20 @@
 </head>
 
 <body>
-    <!-- putting header inside container will prevent full width navbar -->
+    <!-- Putting header inside container will prevent full width navbar -->
 
     <header>
 
-        <!--navbar creates a navigation bar -->
+        <!-- Navbar creates a navigation bar -->
         <!-- Colours https://getbootstrap.com/docs/4.6/utilities/colors/ -->
 
         <nav class="navbar navbar-expand-lg navbar-light bg-info">
 
             <a class="navbar-brand text-light" href="{{url_for('main.index')}}">
                 <img src="{{url_for('static', filename='img/miltonlogo.png')}}" width="30" height="30" class="d-inline-block align-top"
-                    alt="Milton Tours Logo">
-                Milton Tours
-            </a>
+                    alt="Milton Tours Logo">Milton Tours</a>
 
-            <!-- create a button for collapsing the menu -->
+            <!-- Create a button for collapsing the menu -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

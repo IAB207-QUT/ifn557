@@ -58,8 +58,8 @@ being the world’s most livable city; amazing coffee; being the sports capital 
         db.session.add(city2)
         db.session.add(city3)
         db.session.commit()
-    except:
-        return 'There was an issue adding the cities in dbseed function'
+    except Exception as error:
+        return f'There was an issue adding the cities in dbseed function: \n{error}'
 
     t1 = Tour(city_id=city1.id, image='t_cuddle.jpg', price=59.99,\
         date=datetime.datetime(2023, 5, 17),\
@@ -129,7 +129,7 @@ being the world’s most livable city; amazing coffee; being the sports capital 
         db.session.add(t12)
         db.session.add(t13)
         db.session.commit()
-    except:
-        return 'There was an issue adding a tour in dbseed function'
+    except Exception as error:
+        return f'There was an issue adding a tour in dbseed function\n{error}'
 
     return 'DATA LOADED'
