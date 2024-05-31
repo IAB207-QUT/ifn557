@@ -127,3 +127,9 @@ def checkout():
                 flash('There was an issue completing your order')
                 return (redirect(request.referrer))
     return render_template('checkout.html', form=form)
+
+@main_bp.route("/search", methods=['GET','POST'])
+def search():
+    search_query = f'%{request.args.get('search')}%'
+    tours = db.session.scalars(db.select(Tour).where(Tour.description.like(search_query)))
+    return render_template('citytours.html', tours=tours)
